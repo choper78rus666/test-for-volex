@@ -1,1 +1,1 @@
-<div class="row_container center_flex flex_footer">Домашнее задание 2017</div>
+<div class="footer">Тестовое задание 2018</div>

@@ -4,16 +4,14 @@ use Choper78rus\Volex\Base\GenerateResponse;
 use Choper78rus\Volex\Models\TestModel;
 
 class IndexController {
-    private $item;
     
     public function __construct() {
         $this->test = new TestModel();
     }
     
     function indexAction() {
-        $post = $_POST;
-        $title = 'Главная';
-        $view = 'index_view.php'; // вид
+        $title = 'Статистика';
+        $view = 'stats.php'; // вид
         
         GenerateResponse::generateResponse($view, [
             'title' => $title
