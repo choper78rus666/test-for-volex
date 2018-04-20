@@ -2,12 +2,13 @@
 @import "normalize.css";
 
 body {
+    text-align: center;
     position: relative;
     margin: 0 auto;
 }
+
 .header,
 .footer {
-    min-width: 600px;
     background: lightblue;
     border-top: solid 1px blue;
     border-bottom: solid 1px blue;

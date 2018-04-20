@@ -10,12 +10,21 @@ class DB {
     
     function connectDB(){
         $conection = new PDO("mysql:host=$this->servername;dbname=$this->db_name", $this->username, $this->pwd);
-        $sql = "CREATE TABLE IF NOT EXISTS accounts (
+        $sql = "CREATE TABLE IF NOT EXISTS questions (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        login VARCHAR (25) NOT NULL,
-        pwd VARCHAR (100) NOT NULL,
-        email VARCHAR (25) NOT NULL,
-        state VARCHAR (25) NOT NULL);";
+        quest VARCHAR (100) NOT NULL);
+        
+        CREATE TABLE IF NOT EXISTS answers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        answer VARCHAR (100) NOT NULL,
+        type VARCHAR (20) NOT NULL);
+        
+        CREATE TABLE IF NOT EXISTS variations(
+        questions_id INT NOT NULL,
+        answer_id INT NOT NULL,
+        correct ENUM('true','false') NOT NULL,
+        history INT NOT NULL);
+        ";
         
         $conection->exec($sql);
         return $conection;
