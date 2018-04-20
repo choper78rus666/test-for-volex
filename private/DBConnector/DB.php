@@ -23,7 +23,7 @@ class DB {
         questions_id INT NOT NULL,
         answer_id INT NOT NULL,
         correct ENUM('true','false') NOT NULL,
-        history INT NOT NULL);
+        history INT DEFAULT '0' NOT NULL);
         ";
         
         $conection->exec($sql);

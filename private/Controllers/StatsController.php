@@ -15,7 +15,9 @@ class IndexController {
         $view = 'stats.php'; // вид
         
         GenerateResponse::generateResponse($view, [
-            'title' => $title
+            'title' => $title,
+            'stats' => $this->test->getStats(),
+            'last_id' => 0
         ]);
     }
     
