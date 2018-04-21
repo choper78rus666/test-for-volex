@@ -1,19 +1,23 @@
 <!-- Основной контент -->
 <div>
-    <form action="add_test" method="POST">
-    <legend>Вопрос1</legend>
-        <label><input type="checkbox">Ответ1</label>
-        <label><input type="checkbox">Ответ2</label>
-        <label><input type="checkbox">Ответ3</label>
-        <label><input type="checkbox">Ответ4</label>
-        <label><input type="checkbox">Ответ5</label>
-    <legend>Вопрос2</legend>
-        <label><input name="v2" type="radio">Ответ1</label>
-        <label><input name="v2" type="radio">Ответ2</label>
-        <label><input name="v2" type="radio">Ответ3</label>
-        <label><input name="v2" type="radio">Ответ4</label>
-        <label><input name="v2" type="radio">Ответ5</label>
+    <form action="/add" method="post">
+        <? for($i = 0; $i < count($stats); $i++):
+            if(isset($stats[$i]) && $stats[$i]['questions_id'] !== $last_id): ?>
+                <br>
+                <strong><legend><? $last_id = $stats[$i]['questions_id']; echo $stats[$i]['quest']; ?></legend></strong>
+            <? endif;?>
+            <? if($stats[$i]['type'] === 'text'): ?>
+                <label><? echo $stats[$i]['answer']; ?></label>
+                <? if(!isset($stats[$i+1]) || $stats[$i+1]['questions_id'] !== $last_id): ?>
+                    <br>
+                    <input name="<? echo $stats[$i]['questions_id'];?>" type="text">
+                <? endif; ?>
+            <? else: ?>
+                <label><input name="<? echo $stats[$i]['questions_id'];?>" type="<? echo $stats[$i]['type']; ?>" value="<? echo $stats[$i]['answer_id']; ?>"> <? echo $stats[$i]['answer']; ?></label>
+            <? endif; ?>
+                <br>
+        <? endfor; ?>
         <br>
-        <input type="submit" value="Завершить тест">
+        <input type="submit" name="submit" value="Завершить тест">
     </form>
 </div>

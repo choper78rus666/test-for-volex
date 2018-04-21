@@ -1,4 +1,5 @@
 {
+    "name": "choper/test-for-volex",
     "autoload": {
         "psr-4": { "Choper78rus\\Volex\\": "private/" }
     }

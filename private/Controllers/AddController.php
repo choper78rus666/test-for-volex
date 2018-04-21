@@ -3,7 +3,7 @@ namespace Choper78rus\Volex\Controllers;
 use Choper78rus\Volex\Base\GenerateResponse;
 use Choper78rus\Volex\Models\TestModel;
 
-class StatsController {
+class AddController {
     private $test;
     
     public function __construct() {
@@ -11,8 +11,10 @@ class StatsController {
     }
     
     function indexAction() {
-        $title = 'Статистика';
-        $view = 'stats.php'; // вид
+        $post = $_POST;
+        
+        $title = 'Результат теста';
+        $view = 'resault.php'; // вид
         
         GenerateResponse::generateResponse($view, [
             'title' => $title,

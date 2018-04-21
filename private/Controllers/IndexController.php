@@ -11,12 +11,13 @@ class IndexController {
     }
     
     function indexAction() {
-        $post = $_POST;
         $title = 'Главная';
         $view = 'index_view.php'; // вид
         
         GenerateResponse::generateResponse($view, [
-            'title' => $title
+            'title' => $title,
+            'stats' => $this->test->getStats(),
+            'last_id' => 0
         ]);
     }
     
