@@ -6,7 +6,7 @@
             <? $last_id = $stats[$i]['questions_id']; echo $stats[$i]['quest']; ?>
             <br>
         <? endif;?>
-            <? echo $stats[$i]['answer']; echo $stats[$i]['correct'] === 'true' ? " + ":" - "; echo "Выбран: ".$stats[$i]['history']." раз.";?>
+            <? echo $stats[$i]['correct'] === 'true' ? "+ ":"- "; echo $stats[$i]['answer']; echo " Выбран: ".$stats[$i]['history']." раз.";?>
             <br>
     <? endfor; ?>
 </div>

@@ -10,6 +10,9 @@ class DB {
     
     function connectDB(){
         $conection = new PDO("mysql:host=$this->servername;dbname=$this->db_name", $this->username, $this->pwd);
+        /*
+        Создавал таблицы , потом закоментил
+        
         $sql = "CREATE TABLE IF NOT EXISTS questions (
         id INT AUTO_INCREMENT PRIMARY KEY,
         quest VARCHAR (100) NOT NULL);
@@ -26,14 +29,14 @@ class DB {
         history INT DEFAULT '0' NOT NULL);
         ";
         
-        $conection->exec($sql);
+        $conection->exec($sql);*/
         return $conection;
     }
     
     function addSQL($params, $sql) {
         $connect = $this->connectDB();
         $statment = $connect->prepare($sql);
-        return $statment->execute($params);
+        $statment->execute($params);
     }
     
     function getSQL($param=NULL, $sql, $all=false) {

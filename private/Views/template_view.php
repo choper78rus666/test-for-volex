@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Test_for_volex - <? echo $title; ?></title>
         <link rel="stylesheet" href="/static/css/style.css">
-        <script src="/static/js/jquery-3.2.1.js"></script>
         <meta name="viewport"
               content="width=device-width,
                        initial-scale=1.0

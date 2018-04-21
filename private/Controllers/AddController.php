@@ -12,15 +12,15 @@ class AddController {
     
     function indexAction() {
         $post = $_POST;
+        if(isset($post)){
+            $title = 'Результат теста';
+            $view = 'resault.php'; // вид
+            GenerateResponse::generateResponse($view, [
+                'title' => $title,
+                'resault' => $this->test->addTest($post)
+            ]);
+        }
         
-        $title = 'Результат теста';
-        $view = 'resault.php'; // вид
-        
-        GenerateResponse::generateResponse($view, [
-            'title' => $title,
-            'stats' => $this->test->getStats(),
-            'last_id' => 0
-        ]);
     }
     
 }

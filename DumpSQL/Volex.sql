@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 20 2018 г., 14:59
+-- Время создания: Апр 21 2018 г., 20:54
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.6.32
 
@@ -39,21 +39,21 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `answer`, `type`) VALUES
-(1, 'Ответ 1', 'radio'),
-(2, 'Ответ 2', 'radio'),
-(3, 'Ответ 3', 'radio'),
-(4, 'Ответ 4', 'radio'),
-(5, 'Ответ 5', 'radio'),
-(6, 'Ответ 1', 'checkbox'),
-(7, 'Ответ 2', 'checkbox'),
-(8, 'Ответ 3', 'checkbox'),
-(9, 'Ответ 4', 'checkbox'),
-(10, 'Ответ 5', 'checkbox'),
-(11, 'Ответ 1', 'text'),
-(12, 'Ответ 2', 'text'),
-(13, 'Ответ 3', 'text'),
-(14, 'Ответ 4', 'text'),
-(15, 'Ответ 5', 'text');
+(1, 'Ответ 1-1', 'radio'),
+(2, 'Ответ 1-2', 'radio'),
+(3, 'Ответ 1-3', 'radio'),
+(4, 'Ответ 1-4', 'radio'),
+(5, 'Ответ 1-5', 'radio'),
+(6, 'Ответ 2-1', 'checkbox'),
+(7, 'Ответ 2-2', 'checkbox'),
+(8, 'Ответ 2-3', 'checkbox'),
+(9, 'Ответ 2-4', 'checkbox'),
+(10, 'Ответ 2-5', 'checkbox'),
+(11, 'Ответ 3-1', 'text'),
+(12, 'Ответ 3-2', 'text'),
+(13, 'Ответ 3-3', 'text'),
+(14, 'Ответ 3-4', 'text'),
+(15, 'Ответ 3-5', 'text');
 
 -- --------------------------------------------------------
 
@@ -82,6 +82,7 @@ INSERT INTO `questions` (`id`, `quest`) VALUES
 --
 
 CREATE TABLE `variations` (
+  `id_variations` int(11) NOT NULL,
   `questions_id` int(11) NOT NULL,
   `answer_id` int(11) NOT NULL,
   `correct` enum('true','false') NOT NULL,
@@ -92,22 +93,22 @@ CREATE TABLE `variations` (
 -- Дамп данных таблицы `variations`
 --
 
-INSERT INTO `variations` (`questions_id`, `answer_id`, `correct`, `history`) VALUES
-(1, 1, 'false', 0),
-(1, 2, 'true', 0),
-(1, 3, 'false', 0),
-(1, 4, 'false', 0),
-(1, 5, 'false', 0),
-(2, 6, 'true', 0),
-(2, 7, 'false', 0),
-(2, 8, 'true', 0),
-(2, 9, 'false', 0),
-(2, 10, 'true', 0),
-(3, 11, 'true', 0),
-(3, 12, 'false', 0),
-(3, 13, 'false', 0),
-(3, 14, 'false', 0),
-(3, 5, 'false', 0);
+INSERT INTO `variations` (`id_variations`, `questions_id`, `answer_id`, `correct`, `history`) VALUES
+(1, 1, 1, 'false', 11),
+(2, 1, 2, 'true', 8),
+(3, 1, 3, 'false', 3),
+(4, 1, 4, 'false', 2),
+(5, 1, 5, 'false', 1),
+(6, 2, 6, 'true', 11),
+(7, 2, 7, 'false', 10),
+(8, 2, 8, 'true', 6),
+(9, 2, 9, 'false', 8),
+(10, 2, 10, 'true', 5),
+(11, 3, 11, 'true', 5),
+(12, 3, 12, 'false', 3),
+(13, 3, 13, 'false', 1),
+(14, 3, 14, 'false', 0),
+(15, 3, 15, 'false', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -129,6 +130,7 @@ ALTER TABLE `questions`
 -- Индексы таблицы `variations`
 --
 ALTER TABLE `variations`
+  ADD PRIMARY KEY (`id_variations`),
   ADD KEY `answer_id` (`answer_id`),
   ADD KEY `questions_id` (`questions_id`);
 
@@ -147,6 +149,12 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `variations`
+--
+ALTER TABLE `variations`
+  MODIFY `id_variations` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
